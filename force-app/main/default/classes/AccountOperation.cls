@@ -1,6 +1,6 @@
 public class AccountOperation {
     public ID createAccountRecord(){
-        Account account = new Account(Name = 'New Account #1');
+        Account account = new Account(Name = 'New Account Git #1');
         insert account;
         return account.Id;
     }

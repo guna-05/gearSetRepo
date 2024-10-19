@@ -1,0 +1,25 @@
+<template>
+    <lightning-card  title="Demo 3 Conditional Rendering">
+        <div class="slds-box">
+            <h2 class="header">Basic Input Checkbox</h2>
+            <lightning-input type="checkbox" 
+                             label="Basic option" 
+                             name="input1"
+                             checked={isDetailsVisible}
+                             onchange={handleChange}>
+            </lightning-input>
+        </div>
+        <template if:true={isDetailsVisible}>
+            <h2>This is the True Part</h2>
+        </template>
+        <template if:false={isDetailsVisible}>
+            <h2>This is the False Part</h2>
+        </template>
+    </lightning-card>
+    <lightning-card  title="Demo 3 Conditional Rendering using lwc:if">
+        <template lwc:if={myexpression}>This is displayed when myexpression is true <br/></template>
+        <template lwc:if={isDetailsVisible}> This is displayed when isDetailsVisible is true <br/></template>
+        <template lwc:elseif={property2}> This is displayed when isDetailsVisible is false and property2 is true <br/></template>
+        <template lwc:else> This is displayed when property2 is false <br/></template>
+    </lightning-card>
+</template>

@@ -1,0 +1,179 @@
+<template>
+    <lightning-card title="Demo 26 Wrapper Demo">
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="text" label="Enter Account Id" onchange={handleAccountIdChange}>
+            </lightning-input>
+        </div><br />
+        <lightning-button variant="brand" label="Get Account Info" onclick={handleClick} class="slds-m-left_x-small">
+        </lightning-button><br /><br />
+        <template if:true={hasData}>
+            <div class="demo-only slds-m-left_large" style="width:30rem">
+                <article class="slds-tile">
+                    <h3 class="slds-tile__title slds-truncate" title="Salesforce UX">
+                        <a href="#">{allData.accountName}</a>
+                    </h3>
+                    <div class="slds-tile__detail">
+                        <dl class="slds-list_horizontal slds-wrap">
+                            <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Account
+                                Id:</dt>
+                            <dd class="slds-item_detail slds-truncate" title="Description for first label">
+                                {allData.accountId}</dd>
+                            <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Account
+                                Active:</dt>
+                            <dd class="slds-item_detail slds-truncate" title="Description for second label">
+                                {allData.accountActive}</dd>
+                        </dl>
+                    </div>
+                </article>
+            </div>
+            <br />
+            <!--_____________________________ Contact Data Table _____________________________-->
+            <h2 id="element-with-table-label"
+                class="slds-text-heading_medium slds-m-bottom_xx-small slds-m-left_x-small">Related Contacts</h2>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+                aria-labelledby="element-with-table-label other-element-with-table-label">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Contact Name">Contact Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Contact Email">Contact Email</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Title">Title</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Action">Action</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={allContacts} for:item="con" for:index="index">
+                        <tr class="slds-hint-parent" key={con.contactObject.Id}>
+                            <td data-label="Contact Name">
+                                <div if:false={con.isEditable} class="slds-truncate" title="">{con.contactObject.Name}
+                                </div>
+                                <lightning-input if:true={con.isEditable} type="text" label=""
+                                    value={con.contactObject.FirstName} name="FirstName" data-id={index}
+                                    onblur={handleOnBlur}></lightning-input>
+                                <lightning-input if:true={con.isEditable} type="text" label=""
+                                    value={con.contactObject.LastName} name="LastName" data-id={index}
+                                    onblur={handleOnBlur}></lightning-input>
+                            </td>
+                            <td data-label="Contact Email">
+                                <div if:false={con.isEditable} class="slds-truncate" title="">{con.contactObject.Email}
+                                </div>
+                                <lightning-input if:true={con.isEditable} type="text" label=""
+                                    value={con.contactObject.Email} name="Email" data-id={index}
+                                    onblur={handleOnBlur}></lightning-input>
+                            </td>
+                            <td data-label="Title">
+                                <div if:false={con.isEditable} class="slds-truncate" title="">{con.contactObject.Title}
+                                </div>
+                                <lightning-input if:true={con.isEditable} type="text" label=""
+                                    value={con.contactObject.Title} name="Title" data-id={index}
+                                    onblur={handleOnBlur}></lightning-input>
+                            </td>
+                            <td data-label="Action">
+                                <lightning-button if:false={con.isEditable} variant="brand" label="Edit"
+                                    onclick={editSingleContact} data-id={index} class="slds-m-left_x-small">
+                                </lightning-button>
+                                <lightning-button if:true={con.isEditable} variant="brand" label="Save"
+                                    onclick={saveSingleContact} data-id={index} class="slds-m-left_x-small">
+                                </lightning-button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table><br />
+            <lightning-button if:false={editAllContacts} variant="brand" name="Contact" label="Edit Contacts"
+                onclick={editAll} class="slds-m-left_x-small">
+            </lightning-button>
+            <lightning-button if:true={editAllContacts} variant="success" name="Contact" label="Save Contacts"
+                onclick={saveAll} class="slds-m-left_x-small">
+            </lightning-button>
+            <lightning-button variant="success" label="Add New Contact" onclick={addNewContact}
+                class="slds-m-left_x-small">
+            </lightning-button>
+            <br/><br/>
+
+            <!--_____________________________ Opportunity Data Table _____________________________-->
+            <h2 id="element-with-table-label1"
+                class="slds-text-heading_medium slds-m-bottom_xx-small slds-m-left_x-small">Related Opportunity</h2>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+                aria-labelledby="element-with-table-label other-element-with-table-label">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Opportunity Name">Opportunity Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Stage Name">Stage Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Close Date">Close Date</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Amount">Amount</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Action">Action</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={allOpportunity} for:item="opp" for:index="index">
+                        <tr class="slds-hint-parent" key={opp.opportunityObject.Id}>
+                            <td data-label="Opportunity Name">
+                                <div if:false={opp.isEditable} class="slds-truncate" title="">
+                                    {opp.opportunityObject.Name}</div>
+                                <lightning-input if:true={opp.isEditable} type="text" name="Name" label=""
+                                    data-id={index} onblur={handleOnBlurOpp} value={opp.opportunityObject.Name}
+                                    ></lightning-input>
+                            </td>
+                            <td data-label="Stage Name">
+                                <div if:false={opp.isEditable} class="slds-truncate" title="">
+                                    {opp.opportunityObject.StageName}</div>
+                                <lightning-combobox if:true={opp.isEditable} name="StageName" label="Stage Name" data-id={index}
+                                    value={opp.opportunityObject.StageName} placeholder="Select Stage"
+                                    options={stageName} onblur={handleOnBlurOpp} >
+                                </lightning-combobox>
+                            </td>
+                            <td data-label="Close Date">
+                                <div if:false={opp.isEditable} class="slds-truncate" title="">
+                                    {opp.opportunityObject.CloseDate}</div>
+                                <lightning-input if:true={opp.isEditable} type="date" name="CloseDate" data-id={index} label=""
+                                    onblur={handleOnBlurOpp} value={opp.opportunityObject.CloseDate}></lightning-input>
+                            </td>
+                            <td data-label="Amount">
+                                <div if:false={opp.isEditable} class="slds-truncate" title="">
+                                    {opp.opportunityObject.Amount}</div>
+                                <lightning-input if:true={opp.isEditable} type="number" name="Amount"
+                                    onblur={handleOnBlurOpp} label="" value={opp.opportunityObject.Amount}
+                                    data-id={index}></lightning-input>
+                            </td>
+                            <td data-label="Action">
+                                <lightning-button if:false={opp.isEditable} variant="brand" name="Opportunity"
+                                    data-id={index} label="Edit" onclick={editSingleOpportunity} class="slds-m-left_x-small">
+                                </lightning-button>
+                                <lightning-button if:true={opp.isEditable} variant="success" name="Opportunity"
+                                    data-id={index} label="Save" onclick={saveSingleOpportunity} class="slds-m-left_x-small">
+                                </lightning-button>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table><br/>
+            <lightning-button if:false={editAllOpportunity} variant="brand" name="Opportunity"
+                label="Edit Opportunities" onclick={editAll} class="slds-m-left_x-small">
+            </lightning-button>
+            <lightning-button if:true={editAllOpportunity} variant="success" name="Opportunity"
+                label="Save Opportunities" onclick={saveAll} class="slds-m-left_x-small">
+            </lightning-button>
+            <lightning-button variant="success" label="Add New Opportunity" onclick={addNewOpportunity}
+                class="slds-m-left_x-small">
+            </lightning-button>
+        </template>
+    </lightning-card>
+</template>

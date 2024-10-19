@@ -1,0 +1,35 @@
+<template>
+    <lightning-card title="Self Learning 1">
+        
+        <div class="slds-m-horizontal_large">
+            <lightning-combobox
+                    name="college"
+                    label="Select College"
+                    value={clgValue}
+                    placeholder="Select College"
+                    options={clgOption}
+                    onchange={handleCollegeChange}>
+            </lightning-combobox>
+            <lightning-combobox
+                    name="student"
+                    label="Select Student"
+                    value={stuValue}
+                    placeholder="Select Student"
+                    options={stuOption}
+                    onchange={handleStudentChange}>
+            </lightning-combobox><br/>
+
+            <template if:true={tempcondition}>
+                <b>Marks Scroed</b>
+                <lightning-datatable
+                    key-field="Id"
+                    show-row-number-column
+                    hide-checkbox-column
+                    data={markData}
+                    columns={columns}
+                    class="slds-text-body_small">
+                </lightning-datatable>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Demo 16 Refresh Apex">
+        <template for:each={accountList.data} for:item="acc">
+            <div key={acc.Id}>
+                {acc.Id} ------ {acc.Name} ------ {acc.Active__c}
+            </div>
+        </template>
+        Property Value is {testproperty} <br/>
+        <lightning-button 
+                label="Neutral" 
+                onclick={handleClick} 
+                class="slds-m-left_x-small">
+        </lightning-button>
+    </lightning-card>
+</template>

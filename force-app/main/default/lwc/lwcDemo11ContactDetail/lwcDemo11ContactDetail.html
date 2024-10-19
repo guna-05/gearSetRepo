@@ -1,0 +1,11 @@
+<template>
+    <template for:each={contacts} for:item="con" for:index="index">
+        <div key={con.Id} onclick={selecthandler} data-item={con.Id}>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-tile label={con.Name} href="#">
+                    <p class="slds-truncate" title={index}>{con.Id} ------ {con.Title}</p>
+                </lightning-tile>
+            </div>
+        </div>
+    </template>
+</template>

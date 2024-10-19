@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title = "Demo 5 Use of Track with Arrays">
+        <ul class = "slds-list_dotted">
+            <template for:each={contacts} for:item="con">
+                <li key={con.Id}>
+                    {con.Name} ------ {con.Title}
+                </li>
+            </template>
+        </ul>
+        <br/>
+        <lightning-button 
+                            variant="brand-outline" 
+                            label="Update Property Value" 
+                            title="Looks like a link" 
+                            onclick={handleClick} 
+                            class="slds-m-left_x-small">
+        </lightning-button>
+    </lightning-card>
+</template>

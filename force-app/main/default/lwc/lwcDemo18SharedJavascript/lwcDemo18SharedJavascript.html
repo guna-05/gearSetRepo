@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title="Demo 18 Shared Javascript">
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input 
+                            type="number" 
+                            label="Principal Amount"
+                            value={principal}
+                            onchange={handlePrincipalChange}>
+            </lightning-input><br/>
+            <lightning-input 
+                            type="number" 
+                            label="Rate of Interest"
+                            value={rate}
+                            onchange={handleRateChange}>
+            </lightning-input><br/>
+            <lightning-combobox
+                name="progress"
+                label="Select Term"
+                value={term}
+                placeholder="Select Term"
+                options={termoptions}
+                onchange={handleTermChange} >
+            </lightning-combobox><br/>
+        
+            <lightning-button 
+                        variant="brand" 
+                        label="Calculate Monlty Payment" 
+                        onclick={calculateMonltyPayment} 
+                        class="slds-m-left_x-small">
+            </lightning-button><br/>
+            <h3>The Monthly Payement is <b><i><lightning-formatted-number 
+                                                value={monthlypayment}
+                                                format-style="currency" 
+                                                currency-code="USD" 
+                                                currency-display-as="code">
+                                            </lightning-formatted-number></i></b>
+            </h3>
+        </div>
+    </lightning-card>
+</template>

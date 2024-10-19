@@ -1,0 +1,15 @@
+<template>
+    <lightning-card>
+        <lightning-input type="text" label="Enter College Id" onchange={handleOnChange}></lightning-input><br/>
+
+        <lightning-datatable
+                key-field="id"
+                data={studentData}
+                columns={columns}>
+        </lightning-datatable>
+
+        <template for:each={studentData} for:item="con">
+            <h2 key={con.Id}>{con.First_Name__c}</h2>
+        </template>
+    </lightning-card>
+</template>

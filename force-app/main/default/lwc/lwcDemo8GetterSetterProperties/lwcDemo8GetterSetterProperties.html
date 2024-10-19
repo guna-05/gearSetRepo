@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title = "Demo 8 Getter Setter Properties">
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input type="text" 
+                                 label="Enter First Name"
+                                 name="firstname"
+                                 onchange={handleNameChange}>
+                </lightning-input>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input type="text" 
+                                 label="Enter Last Name"
+                                 name="lastname"
+                                 onchange={handleNameChange}>
+                </lightning-input>
+            </div>
+        </div>
+        Fullname is {fullname} <br/>
+        Fullname in Upper Case is : {uppercasename}
+    </lightning-card>
+</template>

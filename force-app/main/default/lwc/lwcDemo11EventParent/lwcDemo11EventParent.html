@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title = "Demo 11 Passign Data from Child to Parent">
+        <lightning-layout horizontal-align="space">
+            <lightning-layout-item padding="around-small">
+                <div class="slds-box">
+                    <c-lwc-demo11-contact-detail onselected={contactSelected} ></c-lwc-demo11-contact-detail>
+                </div>
+            </lightning-layout-item>
+
+            <lightning-layout-item padding="around-small">
+                <div class="slds-box">
+                    The Selected contact Id at Child component is {selectedContactId}
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

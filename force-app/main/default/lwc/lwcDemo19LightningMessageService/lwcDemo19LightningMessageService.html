@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Demo 19 Communication using LMS">
+        <lightning-layout>
+            <lightning-layout-item padding="around-small">
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-input 
+                            type="text" 
+                            label="Enter some text"
+                            onchange={handleMessageChange}>
+                    </lightning-input>
+                    <br/>
+                    <lightning-button 
+                            variant="brand" 
+                            label="Publish Message" 
+                            onclick={handlePublish} 
+                            class="slds-m-left_x-small">
+                    </lightning-button>
+                </div>
+                <br/>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                    <lightning-button 
+                            variant="brand" 
+                            label="Subscribe Message" 
+                            onclick={handleSubscribe} 
+                            class="slds-m-left_x-small">
+                    </lightning-button>
+                    <br/>
+                    <lightning-button 
+                            variant="destructive" 
+                            label="Unsubscribe Message" 
+                            onclick={handleUnsubscribe} 
+                            class="slds-m-left_x-small">
+                    </lightning-button>
+                    <br/>
+                    <div class="slds-box">
+                        Received Message from Channel is {receivedMessage}.
+                    </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="Demo 20 Load Records using LDS">
+        <lightning-record-view-form 
+            object-api-name={objectApiName}
+            record-id={recordId}>
+            <lightning-output-field field-name="Name"></lightning-output-field>
+            <lightning-output-field field-name="Industry"></lightning-output-field>
+            <lightning-output-field field-name="Active__c"></lightning-output-field>
+            <lightning-output-field field-name="Description"></lightning-output-field>
+        </lightning-record-view-form>
+    </lightning-card>
+
+    <lightning-card title="Demo 20 Load Record using uiRecordApi">
+        <p><lightning-formatted-text value={nameValue} ></lightning-formatted-text></p>
+        <p><lightning-formatted-text value={industryValue} ></lightning-formatted-text></p>
+        <p><lightning-formatted-text value={phoneValue} ></lightning-formatted-text></p>
+        <p><lightning-formatted-text value={activeValue} ></lightning-formatted-text></p>
+    </lightning-card>
+
+    <lightning-card title="Demo 20 Load Record using Record Form">
+        <lightning-record-form
+            record-id={recordId}
+            object-api-name={objectApiName}
+            layout-type="Compact"
+            columns="2"
+            mode="view"
+            onsubmit={handleSubmit}
+            onsuccess={handleSuccess}
+            onerror={handleError}>
+        </lightning-record-form>
+    </lightning-card>
+</template>

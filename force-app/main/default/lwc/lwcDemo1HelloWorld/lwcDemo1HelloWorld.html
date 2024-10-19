@@ -1,0 +1,11 @@
+<template>
+    <lightning-card  title="Demo 1 Hello World">
+        <lightning-button 
+            variant="brand"    
+            label="Brand" 
+            onclick={handleClick} 
+            class="slds-m-left_x-small">
+        </lightning-button>
+        <h1 if:true={clicked}> Hello World</h1>
+    </lightning-card>
+</template>

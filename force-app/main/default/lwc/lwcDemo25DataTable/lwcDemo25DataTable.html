@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Demo 25 Data Tabel">
+        <div style="height: 300px;">
+            <lightning-datatable
+                    key-field="id"
+                    data={contactData}
+                    columns={columnsList}
+                    onrowaction={handleRowAction}
+                    hide-checkbox-column
+                    show-row-number-column>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

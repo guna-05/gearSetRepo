@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Demo 9 Calling Child Method">
+        <c-lwc-demo9-time lwc:ref = "mychildcomponent"></c-lwc-demo9-time>
+        <br/>
+            <lightning-button 
+                    variant="brand" 
+                    label="Call Child Method Query Selector" 
+                    onclick={handleClickQuerySelector} 
+                    class="slds-m-left_x-small">
+            </lightning-button> <br/><br/>
+            <lightning-button 
+                    variant="brand" 
+                    label="Call Child Method LWC Ref" 
+                    onclick={handleClickLwcRef} 
+                    class="slds-m-left_x-small">
+            </lightning-button>
+        
+    </lightning-card>
+</template>
